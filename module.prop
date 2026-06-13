@@ -1,0 +1,28 @@
+id=spoof_injector
+name=Rootless Xposed Hook
+version=v6.2
+versionCode=8
+author=Security Hardener
+description=Injects 8 Xposed modules into running apps - Core Patch, Spoof My Device, SSL Bypass, Bootloader Spoofer, IAmNotADeveloper, NoVPNDetect Enhanced, FakeGapps, FuckGoogleLicense
+axeronPlugin=13000
+requirements=AxManager ADB Environment Active, All Xposed modules installed and self-patched
+
+# Injection Configuration
+inject.target=all_user_apps
+inject.method=ptrace
+inject.libc_hooks=openat,execve,dlopen,strstr,strcmp,connect,SSL_read,SSL_write,access,stat,__system_property_read,pipe,socket,ioctl
+inject.auto_detect_new_apps=1
+
+# Modules to inject (in order)
+inject.modules=iamnotadeveloper,novpndetect,bootloaderspoofer,sslbypass,spoofmydevice,fakegapps,fuckgoogle,corepatch
+inject.iamnotadeveloper.package=top.ltfan.notdeveloper
+inject.novpndetect.package=ru.bluecat.novpndetectenhanced
+inject.bootloaderspoofer.package=es.chiteroman.bootloaderspoofer
+inject.sslbypass.package=com.winnersonx.sslbypass
+inject.spoofmydevice.package=com.spoofmydevice
+inject.fakegapps.package=inc.whew.android.fakegapps
+inject.fuckgoogle.package=com.jiguro.fuckgoogle
+inject.corepatch.package=com.coderstory.toolkit
+
+background.service=true
+boot.auto.start=true
